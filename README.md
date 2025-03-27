@@ -1,71 +1,83 @@
-# Getting Started with Create React App
+# Lead Capture Service - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Background
+The **Lead Capture Service** is a full-stack web application designed to collect and manage leads efficiently. It consists of a **ReactJS** frontend and a **Spring Boot** backend, communicating via a REST API. The system allows users to submit lead information, store it in a database, and retrieve or delete leads as needed.
 
-## Available Scripts
+### Tech Stack
+- **Frontend:** ReactJS, Bootstrap, Axios
+- **Backend:** Spring Boot, Spring Data JPA, Hibernate
+- **Database:** PostgreSQL/MySQL (or H2 for in-memory testing)
+- **Build Tools:** Maven (backend), Node.js with npm (frontend)
 
-In the project directory, you can run:
+## Project Structure
+```
+lead-capture-service/
+│── backend/
+│   ├── src/main/java/com/lead/capture
+│   │   ├── controller/  # Handles API requests and responses
+│   │   ├── dto/  		 # Handles API requests JSON
+│   │   ├── exception/ 	 # Global exception handling
+│   │   ├── service/     # Contains business logic for lead management
+│   │   ├── model/       # Entity and DTO definitions
+│   │   ├── repository/  # JPA repositories for database interaction
+│   │   ├── LeadManagementApplication.java  # Main Spring Boot application entry point
+│── frontend/
+│   ├── src/
+│   │   ├── components/  # React components (LeadForm, LeadList, Spinner)
+│   │   ├── services/    # API service functions using Axios
+│   │   ├── App.js       # Main application component
+│── README.md
+```
 
-### `npm start`
+## Setup Instructions
+### Backend Setup
+1. **Install Java 8** (or compatible JDK version)
+2. **Install Maven**
+3. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-repo/lead-capture-service.git
+   cd lead-capture-service/backend
+   ```
+4. **Configure database connection** in `application.properties` (or use in-memory H2 for testing)
+5. **Run the application:**
+   ```sh
+   mvn spring-boot:run
+   ```
+6. The backend will be available at `http://localhost:8080/lead-capture-service/leads`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Frontend Setup
+1. **Install Node.js and npm**
+2. **Navigate to the frontend directory:**
+   ```sh
+   cd lead-capture-service/frontend
+   ```
+3. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+4. **Start the React application:**
+   ```sh
+   npm start
+   ```
+5. The frontend will be available at `http://localhost:3000`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## API Endpoints
+### Lead Management
+| Method | Endpoint | Description |
+|--------|---------|-------------|
+| **POST** | `/leads/addLead` | Adds a new lead |
+| **GET** | `/leads/getLeads` | Retrieves all leads |
+| **DELETE** | `/leads/{id}` | Deletes a lead by ID |
 
-### `npm test`
+## Testing & Error Handling
+- **Frontend**: Uses form validation and API response handling to manage errors.
+- **Backend**: Implements exception handling for missing fields, invalid input, and database errors.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment Guide
+- The backend can be deployed to **AWS, Heroku, or any cloud provider**.
+- The frontend can be hosted on **Vercel, Netlify, or an Nginx server**.
+- Use Docker to containerize the application if needed.
 
-### `npm run build`
+---
+This document serves as a comprehensive guide to setting up, running, and managing the Lead Capture Service.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-"# lead-capture-frontend" 
